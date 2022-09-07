@@ -1,28 +1,32 @@
 // No cambies los nombres de las funciones.
 
 function obtenerMayor(x, y) {
-  if(x>y) {return x}
-  return y
+  if (x > y) {
+    return x;
+  }
+  return y;
 }
 
 function mayoriaDeEdad(edad) {
-  if(edad>18){return "allowed"}
-  return "not allowed"
+  if (edad >= 18) {
+    return "Allowed";
+  }
+  return "Not allowed";
 }
-  
+
 function conection(status) {
-  //Recibimos un estado de conexión de un usuario representado por un valor numérico. 
+  //Recibimos un estado de conexión de un usuario representado por un valor numérico.
   //Cuando el estado es igual a 1, el usuario está "Online"
   //Cuando el estado es igual a 2, el usuario está "Away"
   //De lo contrario, presumimos que el usuario está "Offline"
   //Devolver el estado de conexión de usuario en cada uno de los casos.
   switch (status) {
     case 1:
-      return "Online"
+      return "Online";
     case 2:
-      return "Away"
+      return "Away";
     default:
-      return "Offline"
+      return "Offline";
   }
 }
 
@@ -33,6 +37,16 @@ function saludo(idioma) {
   // Si "idioma" es "ingles", devuelve "Hello!"
   // Si "idioma" no es ninguno de los anteiores o es `undefined` devuelve "Hola!"
   // Tu código:
+  switch (idioma) {
+    case "aleman":
+      return "Guten Tag!";
+    case "mandarin":
+      return "Ni Hao!";
+    case "ingles":
+      return "Hello!";
+    default:
+      return "Hola!";
+  }
 }
 
 function colors(color) {
@@ -43,18 +57,25 @@ function colors(color) {
   //En caso que el color recibido sea "orange", devuleve --> "This is orange"
   //Caso default: devuelve --> "Color not found"
   //Usar el statement Switch.
+  function thisIs(chroma) {
+    return "This is " + chroma;
+  }
+  const availableColors = ["blue", "red", "green", "orange"];
+  return availableColors.includes(color) ? thisIs(color) : "Color not found";
 }
 
 function esDiezOCinco(numero) {
   // Devuelve "true" si "numero" es 10 o 5
   // De lo contrario, devuelve "false"
   // Tu código:
+  return numero == 10 || numero == 5 ? true : false;
 }
 
 function estaEnRango(numero) {
   // Devuelve "true" si "numero" es menor que 50 y mayor que 20
   // De lo contrario, devuelve "false"
   // Tu código:
+  return numero > 20 && numero < 50 ? true : false;
 }
 
 function esEntero(numero) {
@@ -65,6 +86,7 @@ function esEntero(numero) {
   // De lo contrario, devuelve "false"
   // Pista: Puedes resolver esto usando `Math.floor`
   // Tu código:
+  return Math.floor(numero) == numero ? true : false;
 }
 
 function fizzBuzz(numero) {
@@ -72,16 +94,44 @@ function fizzBuzz(numero) {
   // Si "numero" es divisible entre 5, devuelve "buzz"
   // Si "numero" es divisible entre 3 y 5 (ambos), devuelve "fizzbuzz"
   // De lo contrario, devuelve el numero
+  let respuesta = "";
+  if (numero % 3 == 0) {
+    respuesta = "fizz";
+    if (numero % 5 == 0) {
+      respuesta += "buzz";
+    }
+    return respuesta
+  } else if (numero % 5 == 0) {
+    respuesta = "buzz";
+    return respuesta
+  }
+  return numero;
 }
 
 function operadoresLogicos(num1, num2, num3) {
-  //La función recibe tres números distintos. 
+  //La función recibe tres números distintos.
   //Si num1 es mayor a num2 y a num3 y además es positivo, retornar ---> "Número 1 es mayor y positivo"
   //Si alguno de los tres números es negativo, retornar ---> "Hay negativos"
   //Si num3 es más grande que num1 y num2, aumentar su valor en 1 y retornar el nuevo valor.
   //0 no es ni positivo ni negativo. Si alguno de los argumentos es 0, retornar "Error".
-  //Si no se cumplen ninguna de las condiciones anteriores, retornar false. 
+  //Si no se cumplen ninguna de las condiciones anteriores, retornar false.
+  const argumentos = [num1, num2, num3];
+  if (argumentos.includes(0)) {
+    return "Error";
+  }
+  if (num1 < 0 || num2 < 0 || num3 < 0) {
+    return "Hay negativos";
+  }
+  const mayor = argumentos.reduce((a, b) => Math.max(a, b), -Infinity);
+  if (mayor == argumentos[0]) {
+    return "Número 1 es mayor y positivo";
+  }
+  if (mayor == argumentos[2]) {
+    return mayor + 1;
+  }
+  return false;
 }
+console.log(operadoresLogicos(20, -2, 10));
 
 function esPrimo(numero) {
   // Devuelve "true" si "numero" es primo
@@ -89,34 +139,52 @@ function esPrimo(numero) {
   // Pista: un número primo solo es divisible por sí mismo y por 1
   // Pista 2: Puedes resolverlo usando un bucle `for`
   // Nota: Los números 0 y 1 NO son considerados números primos
+  if (numero != 0 && numero != 1) {
+    for (let i = 2; i <= Math.ceil(Math.sqrt(numero)); i++) {
+      if (numero % i == 0) {
+        return false;
+      }
+    }
+    return true;
+  }
+  return false;
 }
 
-function esVerdadero(valor){
-  //Escribe una función que reciba un valor booleano y retorne “Soy verdadero” 
+function esVerdadero(valor) {
+  //Escribe una función que reciba un valor booleano y retorne “Soy verdadero”
   //si su valor es true y “Soy falso” si su valor es false.
   //Escribe tu código aquí
-
+  return valor ? "Soy verdadero" : "Soy falso";
 }
 
-function tablaDelSeis(){
+function tablaDelSeis() {
   //Escribe una función que muestre la tabla de multiplicar del 6 (del 0 al 60).
   //La función devuelve un array con los resultados de la tabla de multiplicar del 6 en orden creciente.
-  //Escribe tu código aquí   
-  
+  //Escribe tu código aquí
+  const arr = [];
+  for (let i = 0; i <= 10; i++) {
+    arr.push(i * 6);
+  }
+  return arr;
 }
 
-function tieneTresDigitos(numero){
+function tieneTresDigitos(numero) {
   //Leer un número entero y retornar true si tiene 3 dígitos. Caso contrario, retorna false.
   //Escribe tu código aquí
-  
+  return numero.toString().length == 3;
 }
 
 function doWhile(numero) {
   //Implementar una función tal que vaya aumentando el valor recibido en 5 hasta un límite de 8 veces
   //Retornar el valor final.
   //Usar el bucle do ... while.
+  var contador = 0;
+  do {
+    numero += 5;
+    contador++;
+  } while (contador < 8);
+  return numero
 }
-
 
 // No modificar nada debajo de esta línea
 // --------------------------------
@@ -136,5 +204,5 @@ module.exports = {
   esVerdadero,
   tablaDelSeis,
   tieneTresDigitos,
-  doWhile
+  doWhile,
 };
