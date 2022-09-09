@@ -1,0 +1,38 @@
+h1 {
+    color: rgb(25, 156, 112);
+}
+img {
+    width: 400px;
+}
+#thirdDiv {
+    background-color: rgba(0, 0, 0, 0.301);
+    padding: 50px;
+    border: 2px black dotted;
+    display: flex;
+    flex-direction: row; 
+}
+#spanId {
+    font-size: 18px;
+    margin: 50px;
+}
+body {
+    background-image: url(https://assets.hongkiat.com/uploads/minimalist-dekstop-wallpapers/4k/original/11.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: rgb(109, 112, 116);
+    
+}
+div {
+    align-self: center;
+    align-items: center;
+    font-family: arial;
+    outline: dashed 1px black;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    flex-direction: column;
+}
+a {
+    color: blueviolet;
+}
